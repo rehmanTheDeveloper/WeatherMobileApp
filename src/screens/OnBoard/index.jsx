@@ -6,8 +6,8 @@ import {LinearGradient} from 'react-native-linear-gradient';
 import {theme} from '../../constants';
 import {AppLogo} from '../../assets';
 import AsyncHelper from '../../asyncHelpers';
-import { HomeList } from '../../Layouts';
 import { app } from '../../configs';
+import { OnBoardList } from '../../Layouts';
 
 const OnBoard = ({navigation}) => {
   const {setItem} = AsyncHelper();
@@ -42,7 +42,7 @@ const OnBoard = ({navigation}) => {
           className="text-center mb-3">
           {app.name}
         </Text>
-        <HomeList />
+        <OnBoardList />
       </View>
       <Button
         style={{

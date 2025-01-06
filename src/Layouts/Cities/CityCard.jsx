@@ -8,13 +8,13 @@ import {Day} from '../../assets';
 const CityCard = ({name}) => {
   return (
     <Card
-      wrapperClassName="w-full items-center mb-3"
+      wrapperClassName="w-full items-center"
       cardClassName="flex flex-row justify-between" touchable={true} onPress={() => console.log(`City Name: ${name} Card Pressed!`)}>
-      <View style={s`flex-1 justify-around pt-4`}>
-        <View style={s`justify-center`}>
+      <View style={s`flex-1 justify-between `}>
+        <View style={s``}>
           <View style={[s`w-full flex-row justify-start items-end mb-2`, {gap: 7}]}>
             <Text
-              size={40}
+              size={30}
               weight="SemiBold"
               color={theme.colors.blue[100]}
               style={{
@@ -31,23 +31,26 @@ const CityCard = ({name}) => {
             H: 14° L:18°
           </Text>
         </View>
-        <Text size={20} color={theme.colors.blue[50]}>
+        <Text size={18} color={theme.colors.blue[50]} weight='Medium'>
           {name}
         </Text>
+        <Text size={16} color={theme.colors.blue[50]}>
+          Pakistan
+        </Text>
       </View>
-      <View style={s`w-5/12 items-center`}>
+      <View style={s`w-5/12 items-end justify-between`}>
         <Image
           source={Day}
           style={{
-            height: 120,
-            width: 120,
+            height: 60,
+            width: 60,
             resizeMode: 'contain',
           }}
         />
         <Text
-          weight="Medium"
-          size={25}
-          className="text-right"
+          weight="Light"
+          size={20}
+          className="text-right mr-2"
           color={theme.colors.blue[50]}>
           Clear
         </Text>

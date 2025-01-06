@@ -3,6 +3,7 @@ import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {s} from 'react-native-wind';
 import {theme} from '../constants';
 import {CardBackground} from '../assets';
+import LinearGradient from 'react-native-linear-gradient';
 
 const Card = ({
   children,
@@ -19,29 +20,21 @@ const Card = ({
       style={[s`p-2 relative ${wrapperClassName}`, wrapperStyle]}
       onPress={onPress}
       aria-label="Card Wrapper">
-        <Image
-        source={CardBackground}
-        style={styles.image}
-      />
-      <View
-        style={[s`py-3 px-2 rounded-xl ${cardClassName}`, cardStyle]}
-        aria-label="Card">
+      <LinearGradient
+        style={[s`py-3 px-2 rounded-2xl ${cardClassName}`, cardStyle]}
+        colors={[theme.colors.blue[600], theme.colors.blue[950]]} start={{x: 0, y: 0}}>
         {children}
-      </View>
+      </LinearGradient>
     </TouchableOpacity>
   ) : (
     <View
       style={[s`p-2 relative ${wrapperClassName}`, wrapperStyle]}
       aria-label="Card Wrapper">
-      <Image
-        source={CardBackground}
-        style={styles.image}
-      />
-      <View
-        style={[s`py-3 px-2 rounded-xl ${cardClassName}`, cardStyle]}
-        aria-label="Card">
+      <LinearGradient
+        style={[s`py-3 px-2 rounded-2xl ${cardClassName}`, cardStyle]}
+        colors={[theme.colors.blue[600], theme.colors.blue[950]]} start={{x: 0, y: 0}}>
         {body}
-      </View>
+      </LinearGradient>
     </View>
   );
 };

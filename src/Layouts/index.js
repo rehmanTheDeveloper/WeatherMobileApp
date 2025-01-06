@@ -1,5 +1,7 @@
-// Home
+// OnBoard
 import OnBoardList from "./OnBoard/List";
+
+// Home
 import HomeHeader from "./Home/Header";
 import HomeCitiesScrollView from "./Home/CitiesScrollView";
 

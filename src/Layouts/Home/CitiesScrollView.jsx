@@ -10,7 +10,7 @@ const HomeCitiesScrollView = () => {
     return (
         <FlatList
         data={cities}
-        renderItem={({ item, index }) => <CityScreen city={item} />}
+        renderItem={({ item, index }) => <CityScreen city={item} key={item} />}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         pagingEnabled={true} 

@@ -11,7 +11,7 @@ import moment from 'moment';
 const HomeHeader = () => {
   const navigation = useNavigation();
   return (
-    <View style={s`w-full flex-row items-center justify-between p-3 py-2`}>
+    <View style={s`w-full flex-row items-center justify-between p-3 py-2 pb-3 border-b border-b-gray-200 bg-white`}>
       <TouchableOpacity
         onPress={() => navigation.navigate('settings')}
         style={s`p-2`}>
