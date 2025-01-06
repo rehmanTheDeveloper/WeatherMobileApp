@@ -1,0 +1,53 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/NoirPro-Bold.otf",
+      "sha1": "00184aedd4ee4d2ca6b5c87cf41e78f64304c89b"
+    },
+    {
+      "path": "src/assets/fonts/NoirPro-BoldItalic.otf",
+      "sha1": "665519ea1acb2180850a3243cedea14bd09035ed"
+    },
+    {
+      "path": "src/assets/fonts/NoirPro-Heavy.otf",
+      "sha1": "e46885faf3edaba4249da387a16c2f3991c905c5"
+    },
+    {
+      "path": "src/assets/fonts/NoirPro-HeavyItalic.otf",
+      "sha1": "7699ff8569f95514d824cab7f698e937a09e0622"
+    },
+    {
+      "path": "src/assets/fonts/NoirPro-Italic.otf",
+      "sha1": "2c1bf2b6f5c9b0aa4406caa9046ac211a0bf3b04"
+    },
+    {
+      "path": "src/assets/fonts/NoirPro-Light.otf",
+      "sha1": "6108edf0cfb3d5f25e3c593949c301c5c2aa5f25"
+    },
+    {
+      "path": "src/assets/fonts/NoirPro-LightItalic.otf",
+      "sha1": "366fd32499aaf36b605aba4fa6070ccc825d2c79"
+    },
+    {
+      "path": "src/assets/fonts/NoirPro-Medium.otf",
+      "sha1": "5512dc285f36cdf7da5ba5eabaca128ca3442537"
+    },
+    {
+      "path": "src/assets/fonts/NoirPro-MediumItalic.otf",
+      "sha1": "6b3695387ee9e7e6927dc5d5f5fdd638dbc5ce28"
+    },
+    {
+      "path": "src/assets/fonts/NoirPro-Regular.otf",
+      "sha1": "d7b44b20eb246b0ff5c41147c0d0fb96fde47c48"
+    },
+    {
+      "path": "src/assets/fonts/NoirPro-SemiBold.otf",
+      "sha1": "fa18815bf4914b93d587c2758b65e234ad51b38b"
+    },
+    {
+      "path": "src/assets/fonts/NoirPro-SemiBoldItalic.otf",
+      "sha1": "2e4b22bf6f287cd965f5d902a451753675c9663f"
+    }
+  ]
+}

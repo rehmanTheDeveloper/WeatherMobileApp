@@ -14,6 +14,18 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-WeatherApp-WeatherAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-WeatherApp-WeatherAppTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		CDA1C096487A4AEDAC1708AA /* NoirPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BAC1DD9F291C46D893D79342 /* NoirPro-Bold.otf */; };
+		FF520E05154346D3A759F18D /* NoirPro-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1D299376507449CFA3F4ABB3 /* NoirPro-BoldItalic.otf */; };
+		9D7896DA10AC4CC0A6288469 /* NoirPro-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 73D6253496A1441FAA7E44C4 /* NoirPro-Heavy.otf */; };
+		B432702F1FDD4D3B842E0744 /* NoirPro-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A9F1780C3D134F0FAFEDCD8F /* NoirPro-HeavyItalic.otf */; };
+		3042B3F52E41490CBDE1AAA6 /* NoirPro-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 01A96F104CCB4B0BA6D75CE8 /* NoirPro-Italic.otf */; };
+		1577828F24AC4A53BE85F2A1 /* NoirPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E33529E01C5E4041918AF190 /* NoirPro-Light.otf */; };
+		203A30213BBB4C8385805FB5 /* NoirPro-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9BE9CE0059C54F4D989FBF02 /* NoirPro-LightItalic.otf */; };
+		30EA8226ADF04E57A5BA0111 /* NoirPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 04CB93B7666841C1A6D94D56 /* NoirPro-Medium.otf */; };
+		68D748830F604BF991810BC9 /* NoirPro-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C2F3D9261A744FBC8C3C1E52 /* NoirPro-MediumItalic.otf */; };
+		022303E2C8B04BBDA75C016A /* NoirPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 85C8438753A54A9E9E770140 /* NoirPro-Regular.otf */; };
+		60D4B5602501492CA26600BB /* NoirPro-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4262AB245179433C97AD7961 /* NoirPro-SemiBold.otf */; };
+		B8656AC197E44461B214321F /* NoirPro-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A8A4306AEC9B4A31A858D160 /* NoirPro-SemiBoldItalic.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +57,18 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = "WeatherApp/LaunchScreen.storyboard"; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-WeatherApp-WeatherAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp-WeatherAppTests.release.xcconfig"; path = "Target Support Files/Pods-WeatherApp-WeatherAppTests/Pods-WeatherApp-WeatherAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		BAC1DD9F291C46D893D79342 /* NoirPro-Bold.otf */ = {isa = PBXFileReference; name = "NoirPro-Bold.otf"; path = "../src/assets/fonts/NoirPro-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1D299376507449CFA3F4ABB3 /* NoirPro-BoldItalic.otf */ = {isa = PBXFileReference; name = "NoirPro-BoldItalic.otf"; path = "../src/assets/fonts/NoirPro-BoldItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		73D6253496A1441FAA7E44C4 /* NoirPro-Heavy.otf */ = {isa = PBXFileReference; name = "NoirPro-Heavy.otf"; path = "../src/assets/fonts/NoirPro-Heavy.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A9F1780C3D134F0FAFEDCD8F /* NoirPro-HeavyItalic.otf */ = {isa = PBXFileReference; name = "NoirPro-HeavyItalic.otf"; path = "../src/assets/fonts/NoirPro-HeavyItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		01A96F104CCB4B0BA6D75CE8 /* NoirPro-Italic.otf */ = {isa = PBXFileReference; name = "NoirPro-Italic.otf"; path = "../src/assets/fonts/NoirPro-Italic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E33529E01C5E4041918AF190 /* NoirPro-Light.otf */ = {isa = PBXFileReference; name = "NoirPro-Light.otf"; path = "../src/assets/fonts/NoirPro-Light.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9BE9CE0059C54F4D989FBF02 /* NoirPro-LightItalic.otf */ = {isa = PBXFileReference; name = "NoirPro-LightItalic.otf"; path = "../src/assets/fonts/NoirPro-LightItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		04CB93B7666841C1A6D94D56 /* NoirPro-Medium.otf */ = {isa = PBXFileReference; name = "NoirPro-Medium.otf"; path = "../src/assets/fonts/NoirPro-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C2F3D9261A744FBC8C3C1E52 /* NoirPro-MediumItalic.otf */ = {isa = PBXFileReference; name = "NoirPro-MediumItalic.otf"; path = "../src/assets/fonts/NoirPro-MediumItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		85C8438753A54A9E9E770140 /* NoirPro-Regular.otf */ = {isa = PBXFileReference; name = "NoirPro-Regular.otf"; path = "../src/assets/fonts/NoirPro-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4262AB245179433C97AD7961 /* NoirPro-SemiBold.otf */ = {isa = PBXFileReference; name = "NoirPro-SemiBold.otf"; path = "../src/assets/fonts/NoirPro-SemiBold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A8A4306AEC9B4A31A858D160 /* NoirPro-SemiBoldItalic.otf */ = {isa = PBXFileReference; name = "NoirPro-SemiBoldItalic.otf"; path = "../src/assets/fonts/NoirPro-SemiBoldItalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +148,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				DA2F4D86CA734C328E5EC409 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -149,6 +174,26 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		DA2F4D86CA734C328E5EC409 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				BAC1DD9F291C46D893D79342 /* NoirPro-Bold.otf */,
+				1D299376507449CFA3F4ABB3 /* NoirPro-BoldItalic.otf */,
+				73D6253496A1441FAA7E44C4 /* NoirPro-Heavy.otf */,
+				A9F1780C3D134F0FAFEDCD8F /* NoirPro-HeavyItalic.otf */,
+				01A96F104CCB4B0BA6D75CE8 /* NoirPro-Italic.otf */,
+				E33529E01C5E4041918AF190 /* NoirPro-Light.otf */,
+				9BE9CE0059C54F4D989FBF02 /* NoirPro-LightItalic.otf */,
+				04CB93B7666841C1A6D94D56 /* NoirPro-Medium.otf */,
+				C2F3D9261A744FBC8C3C1E52 /* NoirPro-MediumItalic.otf */,
+				85C8438753A54A9E9E770140 /* NoirPro-Regular.otf */,
+				4262AB245179433C97AD7961 /* NoirPro-SemiBold.otf */,
+				A8A4306AEC9B4A31A858D160 /* NoirPro-SemiBoldItalic.otf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -245,6 +290,18 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				CDA1C096487A4AEDAC1708AA /* NoirPro-Bold.otf in Resources */,
+				FF520E05154346D3A759F18D /* NoirPro-BoldItalic.otf in Resources */,
+				9D7896DA10AC4CC0A6288469 /* NoirPro-Heavy.otf in Resources */,
+				B432702F1FDD4D3B842E0744 /* NoirPro-HeavyItalic.otf in Resources */,
+				3042B3F52E41490CBDE1AAA6 /* NoirPro-Italic.otf in Resources */,
+				1577828F24AC4A53BE85F2A1 /* NoirPro-Light.otf in Resources */,
+				203A30213BBB4C8385805FB5 /* NoirPro-LightItalic.otf in Resources */,
+				30EA8226ADF04E57A5BA0111 /* NoirPro-Medium.otf in Resources */,
+				68D748830F604BF991810BC9 /* NoirPro-MediumItalic.otf in Resources */,
+				022303E2C8B04BBDA75C016A /* NoirPro-Regular.otf in Resources */,
+				60D4B5602501492CA26600BB /* NoirPro-SemiBold.otf in Resources */,
+				B8656AC197E44461B214321F /* NoirPro-SemiBoldItalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,7 +527,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "WeatherApp/Info.plist";
-             INFOPLIST_KEY_CFBundleDisplayName = "Weather App";
+				INFOPLIST_KEY_CFBundleDisplayName = "Weather App";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -498,7 +555,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = "WeatherApp/Info.plist";
-             INFOPLIST_KEY_CFBundleDisplayName = "Weather App";
+				INFOPLIST_KEY_CFBundleDisplayName = "Weather App";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
