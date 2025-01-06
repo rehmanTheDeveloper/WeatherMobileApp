@@ -4,7 +4,7 @@ import {theme} from '../../constants';
 import {Text} from '../../ui-components';
 import {s} from 'react-native-wind';
 import Pagination from './Pagination';
-import {Cog6ToothIcon, PlusCircleIcon} from 'react-native-heroicons/solid';
+import {Cog6ToothIcon, MagnifyingGlassCircleIcon} from 'react-native-heroicons/solid';
 import {useNavigation} from '@react-navigation/native';
 import moment from 'moment';
 
@@ -37,7 +37,7 @@ const HomeHeader = () => {
       <TouchableOpacity
         onPress={() => navigation.navigate('cities')}
         style={s`p-2`}>
-        <PlusCircleIcon size={30} color={theme.colors.darkBlue[700]} />
+        <MagnifyingGlassCircleIcon size={30} color={theme.colors.darkBlue[700]} />
       </TouchableOpacity>
     </View>
   );

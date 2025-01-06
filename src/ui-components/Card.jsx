@@ -1,8 +1,7 @@
 import React from 'react';
-import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {s} from 'react-native-wind';
 import {theme} from '../constants';
-import {CardBackground} from '../assets';
 import LinearGradient from 'react-native-linear-gradient';
 
 const Card = ({

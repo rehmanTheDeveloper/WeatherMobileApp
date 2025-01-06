@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {Home, OnBoard, Settings, Cities} from '../screens';
+import {Home, OnBoard, Settings, Cities, Search} from '../screens';
 import AsyncHelper from '../asyncHelpers';
 import { stackConfigs } from './config';
 
@@ -56,6 +56,10 @@ const MainStackNavigator = () => {
       <MainStack.Screen
         name="settings"
         component={Settings}
+      />
+      <MainStack.Screen
+        name="search"
+        component={Search}
       />
     </MainStack.Navigator>
   );
