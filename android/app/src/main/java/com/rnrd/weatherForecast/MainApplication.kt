@@ -1,4 +1,4 @@
-package com.rnrd.weatherApp
+package com.rnrd.weatherForecast
 
 import android.app.Application
 import com.facebook.react.PackageList

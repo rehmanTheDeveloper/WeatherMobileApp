@@ -77,9 +77,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.rnrd.weatherApp"
+    namespace "com.rnrd.weatherForecast"
     defaultConfig {
-        applicationId "com.rnrd.weatherApp"
+        applicationId "com.rnrd.weatherForecast"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

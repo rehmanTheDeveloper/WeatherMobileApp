@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface WeatherAppTests : XCTestCase
+@interface WeatherForecastTests : XCTestCase
 
 @end
 
-@implementation WeatherAppTests
+@implementation WeatherForecastTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {

@@ -1,5 +1,5 @@
 {
-  "name": "weatherapp",
+  "name": "weatherforecast",
   "version": "0.0.1",
   "private": true,
   "scripts": {
