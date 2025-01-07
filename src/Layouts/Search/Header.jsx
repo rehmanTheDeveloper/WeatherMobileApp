@@ -13,10 +13,7 @@ const SearchHeader = () => {
             <TouchableOpacity style={s`pr-2 py-2`} onPress={() => navigation.pop()}>
                 <ChevronLeftIcon size={24} color={theme.colors.blue[800]} />
             </TouchableOpacity>
-            <Text weight='Medium' size={20} color={theme.colors.blue[800]} className='flex-1'>Search City</Text>
-            <TouchableOpacity style={s`pr-2 py-2`} onPress={() => navigation.navigate('search')}>
-                <PlusCircleIcon size={24} color={theme.colors.blue[800]} />
-            </TouchableOpacity>
+            <Text weight='Medium' size={20} color={theme.colors.blue[800]}>Search City</Text>
         </View>
     )
 }
