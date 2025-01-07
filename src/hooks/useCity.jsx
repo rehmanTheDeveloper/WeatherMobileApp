@@ -1,12 +1,15 @@
-import axios from 'axios';
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { configs } from '../configs';
 import AsyncHelper from '../asyncHelpers';
 import { useNavigation } from '@react-navigation/native';
+import { useRefresh } from '../contexts/RefreshContext';
+import axios from 'axios';
 
 const useCity = () => {
-    const {setObjectItem, getObjectItem} = AsyncHelper();
     const navigation = useNavigation();
+    const {setObjectItem, getObjectItem} = AsyncHelper();
+    const {setRefresh} = useRefresh();
+
     const searchCity = async (searchValue, controller, setCities) => {
         if (searchValue != null && searchValue.length >= 3) {
             try {
@@ -23,7 +26,15 @@ const useCity = () => {
             setCities([]);
         }
     }
-    const fetchCities = () => {}
+    const fetchCities = async (setCities) => {
+        try {
+            const cities = await getObjectItem('cities');
+            const parsed = JSON.parse(cities);
+            cities === null ? setCities([]) : setCities(parsed)
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
     const addCity = async (details) => {
         try {
             const cities = await getObjectItem('cities');
@@ -46,7 +57,19 @@ const useCity = () => {
             console.log(error.message);
         }
     }
-    const removeCity = () => {}
+    const removeCity = async (id) => {
+        try {
+            const cities = await getObjectItem("cities");
+            const parsed = JSON.parse(cities);
+            const updatedCities = parsed.filter((city) => city.id != id)
+            const stringify = JSON.stringify(updatedCities);
+            await setObjectItem("cities", stringify)
+            setRefresh(prev => !prev)
+        } catch (error) {
+            console.error(error.message);
+            setRefresh(prev => !prev)
+        }
+    }
 
     return {
         searchCity,

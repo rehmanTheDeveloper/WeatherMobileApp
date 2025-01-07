@@ -35,7 +35,7 @@ const CityCard = ({details}) => {
             style={{
               marginVertical: -10,
             }}
-            className="pb-0.5">
+            className="pb-1">
             {WeatherState?.temp_c}°
           </Text>
           <Text size={16} color={theme.colors.blue[50]}>
@@ -51,10 +51,10 @@ const CityCard = ({details}) => {
       </View>
       <View style={s`w-5/12 items-end justify-between`}>
         <Image
-          source={Day}
+          source={WeatherState.weatherImage}
           style={{
-            height: 60,
-            width: 60,
+            height: 45,
+            width: 45,
             resizeMode: 'contain',
           }}
         />
