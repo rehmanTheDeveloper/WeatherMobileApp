@@ -5,6 +5,7 @@ import {theme} from '../../constants';
 import {HomeCitiesScrollView, HomeHeader} from '../../Layouts';
 
 const Home = ({navigation}) => {
+
   return (
     <LinearGradient
       style={s`flex-1 items-center`}

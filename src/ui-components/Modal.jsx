@@ -3,6 +3,7 @@ import {Alert, Dimensions, Modal as RNModal, StyleSheet, View} from 'react-nativ
 import {s} from 'react-native-wind';
 import Button from './Button';
 import Text from './Text';
+import { theme } from '../constants';
 
 const Modal = ({
   modalVisible = false,
@@ -52,10 +53,10 @@ const Modal = ({
             {footer ? (
               <View style={s`w-full flex-row items-center justify-between`}>
               <Button className={'px-3 py-2 rounded-lg'} onPress={() => setModalVisible(prev => !prev)}>
-                <Text size={16} weight='Medium'>Cancel</Text>
+                <Text color={theme.colors.dark[50]} size={16} weight='Medium'>Cancel</Text>
               </Button>
               <Button className={'px-3 py-2 rounded-lg'} onPress={onSuccess}>
-                <Text size={16} weight='Medium'>Done</Text>
+                <Text color={theme.colors.dark[50]} size={16} weight='Medium'>Done</Text>
               </Button>
               </View>
             ) : null}

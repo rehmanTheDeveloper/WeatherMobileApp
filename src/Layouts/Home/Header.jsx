@@ -4,20 +4,24 @@ import {theme} from '../../constants';
 import {Text} from '../../ui-components';
 import {s} from 'react-native-wind';
 import Pagination from './Pagination';
-import {Cog6ToothIcon, MagnifyingGlassCircleIcon} from 'react-native-heroicons/solid';
+import {
+  Cog6ToothIcon,
+  MapIcon,
+} from 'react-native-heroicons/solid';
 import {useNavigation} from '@react-navigation/native';
 import moment from 'moment';
 
 const HomeHeader = () => {
   const navigation = useNavigation();
   return (
-    <View style={s`w-full flex-row items-center justify-between p-3 py-2 pb-3 border-b border-b-gray-200 bg-white`}>
+    <View
+      style={s`w-full flex-row items-center justify-between p-3 py-2 pb-3 border-b border-b-gray-200 bg-white`}>
       <TouchableOpacity
         onPress={() => navigation.navigate('settings')}
         style={s`p-2`}>
         <Cog6ToothIcon size={30} color={theme.colors.darkBlue[700]} />
       </TouchableOpacity>
-      <View style={s`items-center justify-center`}>
+      <View style={s`flex-1 items-center justify-center`}>
         <Text
           weight="Medium"
           size={20}
@@ -37,7 +41,7 @@ const HomeHeader = () => {
       <TouchableOpacity
         onPress={() => navigation.navigate('cities')}
         style={s`p-2`}>
-        <MagnifyingGlassCircleIcon size={30} color={theme.colors.darkBlue[700]} />
+        <MapIcon size={30} color={theme.colors.darkBlue[700]} />
       </TouchableOpacity>
     </View>
   );

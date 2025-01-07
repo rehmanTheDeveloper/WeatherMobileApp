@@ -1,13 +1,18 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Text } from '../../ui-components';
+import {s} from 'react-native-wind';
+import {theme} from '../../constants';
+import LinearGradient from 'react-native-linear-gradient';
+import {SearchCity, SearchHeader} from '../../Layouts';
 
-const Search = () => {
-    return (
-        <View>
-            <Text>Welcome to Search City Component!</Text>
-        </View>
-    )
-}
+const Search = ({navigation}) => {
+  return (
+    <LinearGradient
+      style={s`flex-1 items-center`}
+      colors={[theme.colors.darkBlue[50], theme.colors.blue[100]]}>
+      <SearchHeader />
+      <SearchCity />
+    </LinearGradient>
+  );
+};
 
-export default Search
+export default Search;

@@ -7,7 +7,11 @@ import HomeCitiesScrollView from "./Home/CitiesScrollView";
 
 // Cities
 import CitiesHeader from "./Cities/Header";
-import SearchCity from "./Cities/SearchCity";
+import CitiesCard from "./Cities/CitiesCard";
+
+// Search
+import SearchHeader from "./Search/Header";
+import SearchCity from "./Search/SearchCity";
 
 // Settings
 import SettingsHeader from "./Settings/Header";
@@ -17,6 +21,8 @@ export {
     HomeHeader,
     HomeCitiesScrollView,
     CitiesHeader,
+    CitiesCard,
+    SearchHeader,
     SearchCity,
     SettingsHeader
 }

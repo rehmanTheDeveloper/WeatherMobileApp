@@ -5,6 +5,7 @@ import Input from "./Input";
 import Alert from "./Alert";
 import Modal from "./Modal";
 import Card from "./Card";
+import Loader from "./Loader";
 
 export {
     Text,
@@ -13,5 +14,6 @@ export {
     Input,
     Alert,
     Modal,
-    Card
+    Card,
+    Loader
 }
