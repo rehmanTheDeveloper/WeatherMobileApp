@@ -1,7 +1,7 @@
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { ChevronLeftIcon, PlusCircleIcon } from 'react-native-heroicons/solid';
+import { useNavigation } from '@react-navigation/native';
+import { ChevronLeftIcon } from 'react-native-heroicons/solid';
 import { s } from 'react-native-wind';
 import { theme } from '../../constants';
 import { Text } from '../../ui-components';
