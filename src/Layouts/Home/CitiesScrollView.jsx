@@ -11,7 +11,7 @@ const HomeCitiesScrollView = () => {
   const [Cities, setCities] = useState([]);
   const {fetchCities} = useCity();
   const {Refresh} = useRefresh();
-  const {setPaginationCity} = usePaginationRefresh();
+  const {setPaginationCity, PaginationCity} = usePaginationRefresh();
 
   useEffect(() => {
     const _fetchCities = async () => {
@@ -36,8 +36,10 @@ const HomeCitiesScrollView = () => {
     const newIndex = Math.round(offsetX / screenWidth);
 
     if (newIndex >= 0 && newIndex < Cities.length) {
-      const city = Cities[newIndex];
-      setPaginationCity({...city, index: newIndex});
+      if (newIndex != PaginationCity.index) {
+        const city = Cities[newIndex];
+        setPaginationCity({...city, index: newIndex});
+      }
     }
   };
 

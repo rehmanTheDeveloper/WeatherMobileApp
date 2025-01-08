@@ -36,20 +36,21 @@ const CityCard = ({details}) => {
           style={[s`w-full flex-row justify-start items-end mb-2`, {gap: 7}]}>
           <Text
             size={30}
+            color={constants.theme[Theme].cardText}
             style={{
               marginVertical: -10,
             }}
             className="pb-1">
             {WeatherState?.temp_c}°
           </Text>
-          <Text size={16} >
+          <Text size={16} color={constants.theme[Theme].cardText}>
             feels like {WeatherState?.feelslike_c}°
           </Text>
         </View>
-        <Text size={18}  weight="Medium">
+        <Text size={18}  weight="Medium" color={constants.theme[Theme].cardText}>
           {details.name}, {details.region}
         </Text>
-        <Text size={16} >
+        <Text size={16} color={constants.theme[Theme].cardText}>
           {details.country}
         </Text>
       </View>
@@ -66,7 +67,7 @@ const CityCard = ({details}) => {
           weight="Light"
           size={20}
           className="text-right mr-2"
-          >
+          color={constants.theme[Theme].cardText}>
           {WeatherState?.condition?.text}
         </Text>
       </View>

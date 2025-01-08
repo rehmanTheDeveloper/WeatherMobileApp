@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import {ActivityIndicator, TouchableOpacity, View} from 'react-native';
-import {constants, theme} from '../../constants';
+import {TouchableOpacity, View} from 'react-native';
+import {constants} from '../../constants';
 import {Text} from '../../ui-components';
 import {s} from 'react-native-wind';
 import Pagination from './Pagination';
@@ -15,23 +15,20 @@ import { useTheme } from '../../contexts/ThemeContext';
 const HomeHeader = () => {
   const {Theme} = useTheme();
   const navigation = useNavigation();
-  const [Loading, setLoading] = useState(true);
   const [Cities, setCities] = useState([]);
   const [ActiveId, setActiveId] = useState(0);
   const {fetchPaginationCities} = useCity();
   const {Refresh} = useRefresh();
-  const {setPaginationCity, PaginationCity} = usePaginationRefresh();
+  const {PaginationCity} = usePaginationRefresh();
 
   useEffect(() => {
     const _fetchcities = async () => {
-      setLoading(true);
       try {
         await fetchPaginationCities(setCities);
         setActiveId(PaginationCity.id)
       } catch (error) {
         console.log(error.message);
       }
-      setLoading(false);
     };
     _fetchcities();
   }, [Refresh, PaginationCity]);
@@ -45,7 +42,6 @@ const HomeHeader = () => {
         <Cog6ToothIcon size={30} color={constants.theme[Theme].text} />
       </TouchableOpacity>
       <View style={s`flex-1 items-center justify-center`}>
-        {!Loading ? (<>
             <Text
             weight="Medium"
             size={20}
@@ -61,7 +57,6 @@ const HomeHeader = () => {
             {moment().format('ddd, DD MMMM')}
           </Text>
           <Pagination Cities={Cities} ActiveId={ActiveId} />
-        </>) : (<ActivityIndicator size={'large'} color={constants.theme[Theme].text} />)}
       </View>
       <TouchableOpacity
         onPress={() => navigation.navigate('cities')}

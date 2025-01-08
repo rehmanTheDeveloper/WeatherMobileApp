@@ -25,7 +25,6 @@ const CitiesHeader = () => {
       <Text
         weight="Medium"
         size={20}
-        color={constants.theme[Theme].heading}
         className="flex-1">
         Cities Management
       </Text>
