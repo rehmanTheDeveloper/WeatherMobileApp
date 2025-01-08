@@ -38,7 +38,7 @@ const SearchCity = () => {
         <View style={s`justify-center`}>
           {Cities.length > 0 ? (
             Cities.map((city, index) => (
-              <CityCard details={city} key={city.id} />
+              <CityCard details={{...city, index: index}} key={city.id} />
             ))
           ) : (
             <View style={s`w-full flex-row justify-center py-3`}>

@@ -5,13 +5,13 @@ import {theme} from '../../constants';
 import {HomeCitiesScrollView, HomeHeader} from '../../Layouts';
 
 const Home = ({navigation}) => {
-
+  
   return (
     <LinearGradient
       style={s`flex-1 items-center`}
       colors={[theme.colors.darkBlue[50], theme.colors.blue[100]]}>
-      <HomeHeader />
-      <HomeCitiesScrollView />
+          <HomeHeader />
+          <HomeCitiesScrollView />
     </LinearGradient>
   );
 };

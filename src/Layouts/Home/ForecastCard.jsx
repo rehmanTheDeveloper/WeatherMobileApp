@@ -1,23 +1,23 @@
 import React from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import {Image, StyleSheet} from 'react-native';
 import { Text } from '../../ui-components';
-import { Day } from '../../assets';
 import { theme } from '../../constants';
 import LinearGradient from 'react-native-linear-gradient';
+import moment from 'moment';
 
 const HomeForecastCard = ({
     time,
-    condition,
+    image,
     temperature
 }) => {
   return (
     <LinearGradient style={styles.forecastCard} colors={[theme.colors.blue[600], theme.colors.blue[950]]}>
       <Text size={16} color={theme.colors.blue[50]} weight="Medium">
-        12 PM
+        {time ? moment(time).format('hh A') : "NULL"}
       </Text>
-      <Image source={Day} style={styles.forecastImage} />
+      <Image source={image} style={styles.forecastImage} />
       <Text size={20} color={theme.colors.blue[50]} weight="SemiBold">
-        14°
+        {temperature}°
       </Text>
     </LinearGradient>
   );

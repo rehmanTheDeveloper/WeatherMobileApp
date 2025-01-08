@@ -3,16 +3,13 @@ import { StyleSheet, View } from 'react-native';
 import { s } from 'react-native-wind';
 import { theme } from '../../constants';
 
-const Pagination = () => {
+const Pagination = ({Cities, ActiveId}) => {
+
     return (
         <View style={s`flex-row items-center mt-2`}>
-            <PaginationRound active={true} />
-            <PaginationRound active={false} />
-            <PaginationRound active={false} />
-            <PaginationRound active={false} />
-            <PaginationRound active={false} />
-            <PaginationRound active={false} />
-            <PaginationRound active={false} />
+            {Cities?.length > 0 ? (
+                Cities?.map((city, index) => <PaginationRound active={city.id === ActiveId} key={city.id} />)
+            ) : <PaginationRound active={false} />}
         </View>
     )
 }

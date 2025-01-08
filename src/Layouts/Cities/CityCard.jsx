@@ -5,11 +5,15 @@ import {theme} from '../../constants';
 import {Card, Text} from '../../ui-components';
 import {useWeather} from '../../hooks';
 import { TrashIcon } from 'react-native-heroicons/solid';
+import { usePaginationRefresh } from '../../contexts/PaginationRefreshContext';
+import { useNavigation } from '@react-navigation/native';
 
 const CityCard = ({details, setModalState}) => {
+  const navigation = useNavigation();
   const [Loading, setLoading] = useState(true);
   const [WeatherState, setWeatherState] = useState({});
   const {currentWeather} = useWeather();
+  const {setPaginationCity, setPaginationRefresh} = usePaginationRefresh();
 
   useEffect(() => {
     const fetchCurrentWeather = async () => {
@@ -24,8 +28,7 @@ const CityCard = ({details, setModalState}) => {
       <Card
         wrapperClassName="w-full items-center flex-1"
         cardClassName="flex flex-row justify-between"
-        touchable={true}
-        onPress={() => console.log(`City Name: ${details.name} Card Pressed!`)}>
+        touchable={true}>
         <View style={s`flex-1 justify-between `}>
           <View
             style={[s`w-full flex-row justify-start items-end mb-2`, {gap: 7}]}>

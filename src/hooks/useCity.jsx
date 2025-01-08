@@ -4,11 +4,13 @@ import AsyncHelper from '../asyncHelpers';
 import { useNavigation } from '@react-navigation/native';
 import { useRefresh } from '../contexts/RefreshContext';
 import axios from 'axios';
+import { usePaginationRefresh } from '../contexts/PaginationRefreshContext';
 
 const useCity = () => {
     const navigation = useNavigation();
     const {setObjectItem, getObjectItem} = AsyncHelper();
     const {setRefresh} = useRefresh();
+    const {setPaginationCity} = usePaginationRefresh();
 
     const searchCity = async (searchValue, controller, setCities) => {
         if (searchValue != null && searchValue.length >= 3) {
@@ -29,8 +31,7 @@ const useCity = () => {
     const fetchCities = async (setCities) => {
         try {
             const cities = await getObjectItem('cities');
-            const parsed = JSON.parse(cities);
-            cities === null ? setCities([]) : setCities(parsed)
+            cities === null ? setCities([]) : setCities(cities)
         } catch (error) {
             console.log(error.message);
         }
@@ -40,19 +41,17 @@ const useCity = () => {
             const cities = await getObjectItem('cities');
             if (cities === null) {
                 const city = [details];
-                const stringify = JSON.stringify(city);
-                await setObjectItem('cities', stringify);
+                await setObjectItem('cities', city);
             } else {
-                const parsed = JSON.parse(cities);
-                const foundCity = parsed.filter((city) => city.id === details.id)
+                const foundCity = cities.filter((city) => city.id === details.id)
                 if (foundCity.length === 0) {
-                    parsed.push(details);
-                    console.log(parsed);
-                    const stringify = JSON.stringify(parsed);
-                    await setObjectItem('cities', stringify);
+                    cities.push(details);
+                    await setObjectItem('cities', cities);
                 }
             }
-            navigation.navigate('home');
+            navigation.pop();
+            setPaginationCity(details);
+            setRefresh(prev => !prev);
         } catch (error) {
             console.log(error.message);
         }
@@ -60,14 +59,38 @@ const useCity = () => {
     const removeCity = async (id) => {
         try {
             const cities = await getObjectItem("cities");
-            const parsed = JSON.parse(cities);
-            const updatedCities = parsed.filter((city) => city.id != id)
-            const stringify = JSON.stringify(updatedCities);
-            await setObjectItem("cities", stringify)
+            const updatedCities = cities.filter((city) => city.id != id)
+            await setObjectItem("cities", updatedCities)
+            setPaginationCity(updatedCities?.length > 0 ? updatedCities[0] : {})
             setRefresh(prev => !prev)
         } catch (error) {
             console.error(error.message);
             setRefresh(prev => !prev)
+        }
+    }
+    const fetchPaginationCities = async (setPagination, setActiveId) => {
+        try {
+            const cities = await getObjectItem("cities");
+            const paginationCities = [];
+            cities.map((city, index) => {
+                paginationCities.push({
+                    id: city.id,
+                    name: city.name,
+                    region: city.region,
+                })
+            })
+            await setPagination(paginationCities);
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+    const fetchPaginationCity = async () => {
+        try {
+            const cities = await getObjectItem("cities");
+            const city = cities[0]
+            return city;
+        } catch (error) {
+            console.log(error.message);
         }
     }
 
@@ -76,6 +99,8 @@ const useCity = () => {
         fetchCities,
         addCity,
         removeCity,
+        fetchPaginationCities,
+        fetchPaginationCity
     }
 }
 

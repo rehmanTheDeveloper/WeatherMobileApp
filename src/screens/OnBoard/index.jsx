@@ -3,17 +3,19 @@ import {Image, View} from 'react-native';
 import {s} from 'react-native-wind';
 import {Button, Text} from '../../ui-components';
 import {LinearGradient} from 'react-native-linear-gradient';
-import {theme} from '../../constants';
+import {constants, theme} from '../../constants';
 import {AppLogo} from '../../assets';
 import AsyncHelper from '../../asyncHelpers';
 import { app } from '../../configs';
 import { OnBoardList } from '../../Layouts';
 
 const OnBoard = ({navigation}) => {
-  const {setItem} = AsyncHelper();
+  const {setItem, setObjectItem} = AsyncHelper();
   const onBoardStatus = async () => {
     try {
       const status = await setItem('onBoard', 'true');
+      const city = [constants.defaultCity];
+      await setObjectItem("cities", city);
       if (status) {
         navigation.navigate('app');
       }
