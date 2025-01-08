@@ -3,7 +3,8 @@ import {Alert, Dimensions, Modal as RNModal, StyleSheet, View} from 'react-nativ
 import {s} from 'react-native-wind';
 import Button from './Button';
 import Text from './Text';
-import { theme } from '../constants';
+import { constants } from '../constants';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Modal = ({
   modalVisible = false,
@@ -13,6 +14,7 @@ const Modal = ({
   footer = true,
   animationType = "fade" // fade or slide or none
 }) => {
+  const {Theme} = useTheme();
   const styles = StyleSheet.create({
     centeredView: {
       justifyContent: animationType == 'slide' ? 'flex-end' : 'center',
@@ -29,6 +31,9 @@ const Modal = ({
       shadowOpacity: 0.25,
       shadowRadius: 4,
       elevation: 5,
+      backgroundColor: constants.theme[Theme].viewBackground,
+      borderWidth: 1, 
+      borderColor: constants.theme[Theme].borderColor,
       maxHeight: animationType == 'slide' ? Dimensions.get('window').height * 0.8 : 'fit-content',
     }, animationType == 'slide' ? {width: Dimensions.get('window').width} : {}]
   });
@@ -53,10 +58,10 @@ const Modal = ({
             {footer ? (
               <View style={s`w-full flex-row items-center justify-between`}>
               <Button className={'px-3 py-2 rounded-lg'} onPress={() => setModalVisible(prev => !prev)}>
-                <Text color={theme.colors.dark[50]} size={16} weight='Medium'>Cancel</Text>
+                <Text color={constants.theme[Theme].buttonText} size={16} weight='Medium'>Cancel</Text>
               </Button>
               <Button className={'px-3 py-2 rounded-lg'} onPress={onSuccess}>
-                <Text color={theme.colors.dark[50]} size={16} weight='Medium'>Done</Text>
+                <Text color={constants.theme[Theme].buttonText} size={16} weight='Medium'>Done</Text>
               </Button>
               </View>
             ) : null}

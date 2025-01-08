@@ -15,6 +15,4 @@ const Badge = ({
     )
 }
 
-const styles = StyleSheet.create({})
-
 export default Badge

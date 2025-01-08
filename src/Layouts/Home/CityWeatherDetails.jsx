@@ -9,19 +9,29 @@ import {
 } from 'react-native';
 import {s} from 'react-native-wind';
 import {Card, Text} from '../../ui-components';
-import {theme} from '../../constants';
-import {HumidityIcon, TemperatureIcon, WindIcon} from '../../assets';
+import {constants, theme} from '../../constants';
+import {
+  Day,
+  DayRain,
+  HumidityIcon,
+  Night,
+  TemperatureIcon,
+  WindIcon,
+} from '../../assets';
 import HomeForecastCard from './ForecastCard';
 import {useWeather} from '../../hooks';
+import {useTheme} from '../../contexts/ThemeContext';
 
 const {width} = Dimensions.get('window');
 
 const CityWeatherDetails = ({details}) => {
+  const {Theme} = useTheme();
   const [Loading, setLoading] = useState(true);
   const [WeatherState, setWeatherState] = useState({});
   const [Forecast, setForecast] = useState([]);
   const [ForecastLoading, setForecastLoading] = useState(true);
-  const {currentWeather, getWindStatus, weatherForecast} = useWeather();
+  const {currentWeather, getWindStatus, weatherForecast, getWeatherImage} =
+    useWeather();
 
   useEffect(() => {
     const fetchCurrentWeather = async () => {
@@ -34,6 +44,22 @@ const CityWeatherDetails = ({details}) => {
     };
     fetchCurrentWeather();
   }, [details]);
+
+  const styles = StyleSheet.create({
+    weatherImage: {
+      height: 160,
+      width: 160,
+      marginVertical: 50,
+    },
+    forecastWrapper: {
+      borderTopLeftRadius: 25,
+      borderTopRightRadius: 25,
+      backgroundColor: constants.theme[Theme].viewBackground,
+      borderWidth: Theme == "dark" ? 1 : 0,
+      borderColor: constants.theme[Theme].borderColor,
+    },
+  });
+
   return (
     <ScrollView style={s`w-full flex-1`} showsVerticalScrollIndicator={false}>
       {!Loading ? (
@@ -42,32 +68,37 @@ const CityWeatherDetails = ({details}) => {
             source={WeatherState.weatherImage}
             style={styles.weatherImage}
           />
-          <View style={s`w-full flex-row items-center justify-between px-3`}>
+          <View style={s`w-full flex-row items-end justify-between px-3`}>
             <Text
               size={25}
-              color={theme.colors.blue[600]}
+              color={constants.theme[Theme].text}
               weight="Medium"
               className="flex-1">
-              {WeatherState.condition.text}
+              {WeatherState.condition.text},{' '}
+              {WeatherState.is_day ? 'Day' : 'Night'}
             </Text>
-
             <Text
-              size={25}
-              color={theme.colors.blue[600]}
+              size={20}
+              color={constants.theme[Theme].text}
               weight="Medium"
               className="flex-1 text-right">
-              {WeatherState.is_day ? 'Day' : 'Night'}
+              L: {Forecast[0]?.day.mintemp_c}° H: {Forecast[0]?.day.maxtemp_c}°
             </Text>
           </View>
           <View style={s`w-full flex-row flex-wrap justify-center px-1 py-4`}>
             <Card
               cardStyle={{
                 minHeight: 120,
+                borderWidth: 1,
+                borderColor: constants.theme[Theme].borderColor,
               }}
               wrapperClassName="w-6/12 items-center"
               cardClassName="items-start justify-around">
               <View style={s`w-full flex-row justify-between`}>
-                <Text weight="Medium" color={theme.colors.blue[50]} size={16}>
+                <Text
+                  weight="Medium"
+                  color={constants.theme[Theme].heading}
+                  size={16}>
                   Temperature
                 </Text>
                 <Image
@@ -81,15 +112,15 @@ const CityWeatherDetails = ({details}) => {
               <View
                 style={[s`w-full flex-row justify-start items-end`, {gap: 7}]}>
                 <Text
-                  size={30}
+                  size={24}
                   color={theme.colors.blue[100]}
                   style={{
                     marginVertical: -10,
                   }}
-                  className=" pb-0.5">
+                  className=" pb-1.5">
                   {WeatherState.temp_c}°
                 </Text>
-                <Text size={14} color={theme.colors.blue[50]}>
+                <Text size={14} color={constants.theme[Theme].heading}>
                   feels like {WeatherState.feelslike_c}°
                 </Text>
               </View>
@@ -97,11 +128,13 @@ const CityWeatherDetails = ({details}) => {
             <Card
               cardStyle={{
                 minHeight: 120,
+                borderWidth: 1,
+                borderColor: constants.theme[Theme].borderColor,
               }}
               wrapperClassName="w-6/12 items-center"
               cardClassName="items-start justify-around">
               <View style={s`w-full flex-row justify-between`}>
-                <Text weight="Medium" color={theme.colors.blue[50]}>
+                <Text weight="Medium" color={constants.theme[Theme].heading}>
                   Weather
                 </Text>
                 <Image
@@ -126,11 +159,13 @@ const CityWeatherDetails = ({details}) => {
             <Card
               cardStyle={{
                 minHeight: 120,
+                borderWidth: 1,
+                borderColor: constants.theme[Theme].borderColor,
               }}
               wrapperClassName="w-6/12 items-center"
               cardClassName="items-start justify-around">
               <View style={s`w-full flex-row justify-between`}>
-                <Text weight="Medium" color={theme.colors.blue[50]}>
+                <Text weight="Medium" color={constants.theme[Theme].heading}>
                   Wind
                 </Text>
                 <Image
@@ -156,11 +191,13 @@ const CityWeatherDetails = ({details}) => {
             <Card
               cardStyle={{
                 minHeight: 120,
+                borderWidth: 1,
+                borderColor: constants.theme[Theme].borderColor,
               }}
               wrapperClassName="w-6/12 items-center"
               cardClassName="items-start justify-around">
               <View style={s`w-full flex-row justify-between`}>
-                <Text weight="Medium" color={theme.colors.blue[50]}>
+                <Text weight="Medium" color={constants.theme[Theme].heading}>
                   Humidity
                 </Text>
                 <Image
@@ -173,7 +210,7 @@ const CityWeatherDetails = ({details}) => {
               </View>
               <Text
                 size={25}
-                weight="SemiBold"
+                weight="Medium"
                 color={theme.colors.blue[100]}
                 style={{
                   marginVertical: -10,
@@ -195,36 +232,173 @@ const CityWeatherDetails = ({details}) => {
               horizontal={true}
               showsHorizontalScrollIndicator={false}
               nestedScrollEnabled={true}>
-              {!ForecastLoading ? Forecast.map((cityForecast, index) => (
-                <HomeForecastCard
-                  time={cityForecast.time}
-                  temperature={cityForecast.temperature}
-                  image={cityForecast.image}
-                  key={index}
-                />
-              )) : (<View style={[s`w-full items-center py-3`, {width}]}><ActivityIndicator size={'large'} color={theme.colors.blue[600]} /></View>)}
+              {!ForecastLoading ? (
+                Forecast[0].hour.map((cityForecast, index) => {
+                  const image = getWeatherImage(
+                    cityForecast.condition.text,
+                    cityForecast.is_day,
+                  );
+                  return (
+                    <HomeForecastCard
+                      time={cityForecast.time}
+                      temperature={cityForecast.temp_c}
+                      image={image}
+                      key={index}
+                    />
+                  );
+                })
+              ) : (
+                <View style={[s`w-full items-center py-3`, {width}]}>
+                  <ActivityIndicator
+                    size={'large'}
+                    color={constants.theme[Theme].text}
+                  />
+                </View>
+              )}
             </ScrollView>
+            <View style={s`w-full flex-row flex-wrap justify-between py-4`}>
+              <Card
+                cardStyle={{
+                  minHeight: 120,
+                  borderWidth: 1,
+                  borderColor: constants.theme[Theme].borderColor,
+                }}
+                wrapperClassName="w-6/12 items-center"
+                cardClassName="items-start justify-around">
+                <View style={s`w-full flex-row justify-between`}>
+                  <Text
+                    weight="Medium"
+                    color={constants.theme[Theme].heading}
+                    size={16}>
+                    Sunrise
+                  </Text>
+                  <Image
+                    source={Day}
+                    style={{
+                      height: 60,
+                      width: 60,
+                    }}
+                  />
+                </View>
+                <Text
+                  size={18}
+                  color={theme.colors.blue[100]}
+                  style={{
+                    marginVertical: -10,
+                  }}
+                  className=" pb-0.5">
+                  {`${Forecast[0]?.astro.sunrise} \n${Forecast[0]?.astro.sunset}`}
+                </Text>
+              </Card>
+              <Card
+                cardStyle={{
+                  minHeight: 120,
+                  borderWidth: 1,
+                  borderColor: constants.theme[Theme].borderColor,
+                }}
+                wrapperClassName="w-6/12 items-center"
+                cardClassName="items-start justify-around">
+                <View style={s`w-full flex-row justify-between`}>
+                  <Text
+                    weight="Medium"
+                    color={constants.theme[Theme].heading}
+                    size={16}>
+                    Moon Rise
+                  </Text>
+                  <Image
+                    source={Night}
+                    style={{
+                      height: 60,
+                      width: 60,
+                    }}
+                  />
+                </View>
+                <Text
+                  size={18}
+                  color={theme.colors.blue[100]}
+                  style={{
+                    marginVertical: -10,
+                  }}
+                  className=" pb-0.5">
+                  {`${Forecast[0]?.astro.moonrise} \n${Forecast[0]?.astro.moonset}`}
+                </Text>
+              </Card>
+
+              <Card
+                cardStyle={{
+                  minHeight: 120,
+                  borderWidth: 1,
+                  borderColor: constants.theme[Theme].borderColor,
+                }}
+                wrapperClassName="w-6/12 items-center"
+                cardClassName="items-start justify-around">
+                <View style={s`w-full flex-row justify-between`}>
+                  <Text weight="Medium" color={constants.theme[Theme].heading}>
+                    UV Index
+                  </Text>
+                  <Image
+                    source={TemperatureIcon}
+                    style={{
+                      height: 60,
+                      width: 60,
+                    }}
+                  />
+                </View>
+                <Text
+                  size={20}
+                  weight="Medium"
+                  color={theme.colors.blue[100]}
+                  style={{
+                    marginVertical: -10,
+                  }}
+                  className="pb-2">
+                  {Forecast[0]?.day.uv} | Weak
+                </Text>
+              </Card>
+              <Card
+                cardStyle={{
+                  minHeight: 120,
+                  borderWidth: 1,
+                  borderColor: constants.theme[Theme].borderColor,
+                }}
+                wrapperClassName="w-6/12 items-center"
+                cardClassName="items-start justify-around">
+                <View style={s`w-full flex-row justify-between`}>
+                  <Text weight="Medium" color={constants.theme[Theme].heading}>
+                    Humidity
+                  </Text>
+                  <Image
+                    source={DayRain}
+                    style={{
+                      height: 60,
+                      width: 60,
+                    }}
+                  />
+                </View>
+                <Text
+                  size={25}
+                  weight="Medium"
+                  color={theme.colors.blue[100]}
+                  style={{
+                    marginVertical: -10,
+                  }}
+                  className="pb-1">
+                  {Forecast[0]?.day.totalprecip_mm} mm
+                </Text>
+              </Card>
+            </View>
           </View>
         </View>
       ) : (
         <View>
-          <ActivityIndicator size={'large'} color={theme.colors.blue[600]} />
+          <ActivityIndicator
+            size={'large'}
+            color={constants.theme[Theme].text}
+          />
         </View>
       )}
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  weatherImage: {
-    height: 160,
-    width: 160,
-    marginVertical: 50,
-  },
-  forecastWrapper: {
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
-  },
-});
 
 export default CityWeatherDetails;

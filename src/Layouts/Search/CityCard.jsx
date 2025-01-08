@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, Image, View} from 'react-native';
 import {s} from 'react-native-wind';
-import {theme} from '../../constants';
+import {constants, theme} from '../../constants';
 import {Card, Text} from '../../ui-components';
-import {Day} from '../../assets';
 import {useCity, useWeather} from '../../hooks';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const CityCard = ({details}) => {
+  const {Theme} = useTheme();
   const [Loading, setLoading] = useState(true);
   const [WeatherState, setWeatherState] = useState({});
   const {currentWeather} = useWeather();
@@ -24,6 +25,10 @@ const CityCard = ({details}) => {
     <Card
       wrapperClassName="w-full items-center px-0"
       cardClassName="flex flex-row justify-between"
+      cardStyle={{
+        borderWidth: 1,
+        borderColor: constants.theme[Theme].borderColor
+      }}
       touchable={true}
       onPress={() => addCity(details)}>
       <View style={s`flex-1 justify-between `}>
@@ -31,21 +36,20 @@ const CityCard = ({details}) => {
           style={[s`w-full flex-row justify-start items-end mb-2`, {gap: 7}]}>
           <Text
             size={30}
-            color={theme.colors.blue[100]}
             style={{
               marginVertical: -10,
             }}
             className="pb-1">
             {WeatherState?.temp_c}°
           </Text>
-          <Text size={16} color={theme.colors.blue[50]}>
+          <Text size={16} >
             feels like {WeatherState?.feelslike_c}°
           </Text>
         </View>
-        <Text size={18} color={theme.colors.blue[50]} weight="Medium">
+        <Text size={18}  weight="Medium">
           {details.name}, {details.region}
         </Text>
-        <Text size={16} color={theme.colors.blue[50]}>
+        <Text size={16} >
           {details.country}
         </Text>
       </View>
@@ -62,14 +66,14 @@ const CityCard = ({details}) => {
           weight="Light"
           size={20}
           className="text-right mr-2"
-          color={theme.colors.blue[50]}>
+          >
           {WeatherState?.condition?.text}
         </Text>
       </View>
     </Card>
   ) : (
     <View style={s`w-full flex-row justify-center py-5`}>
-      <ActivityIndicator size={'large'} color={theme.colors.blue[600]} />
+      <ActivityIndicator size={'large'} color={constants.theme[Theme].text} />
     </View>
   );
 };

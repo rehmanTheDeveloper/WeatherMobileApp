@@ -11,8 +11,7 @@ const HomeCitiesScrollView = () => {
   const [Cities, setCities] = useState([]);
   const {fetchCities} = useCity();
   const {Refresh} = useRefresh();
-  const {setPaginationCity, PaginationCity, PaginationRefresh} = usePaginationRefresh();
-  const flatListRef = useRef(null);
+  const {setPaginationCity} = usePaginationRefresh();
 
   useEffect(() => {
     const _fetchCities = async () => {

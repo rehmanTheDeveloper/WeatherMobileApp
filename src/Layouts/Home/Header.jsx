@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {ActivityIndicator, TouchableOpacity, View} from 'react-native';
-import {theme} from '../../constants';
+import {constants, theme} from '../../constants';
 import {Text} from '../../ui-components';
 import {s} from 'react-native-wind';
 import Pagination from './Pagination';
@@ -10,8 +10,10 @@ import moment from 'moment';
 import { useCity } from '../../hooks';
 import { useRefresh } from '../../contexts/RefreshContext';
 import { usePaginationRefresh } from '../../contexts/PaginationRefreshContext';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const HomeHeader = () => {
+  const {Theme} = useTheme();
   const navigation = useNavigation();
   const [Loading, setLoading] = useState(true);
   const [Cities, setCities] = useState([]);
@@ -36,11 +38,11 @@ const HomeHeader = () => {
   
   return (
     <View
-      style={s`w-full flex-row items-center justify-between p-3 py-2 pb-3 border-b border-b-gray-200 bg-white`}>
+      style={[s`w-full flex-row items-center justify-between p-3 py-2 pb-3 ${Theme != "dark" && "border-b border-b-gray-200"}`, {backgroundColor: constants.theme[Theme].header}]}>
       <TouchableOpacity
         onPress={() => navigation.navigate('settings')}
         style={s`p-2`}>
-        <Cog6ToothIcon size={30} color={theme.colors.darkBlue[700]} />
+        <Cog6ToothIcon size={30} color={constants.theme[Theme].text} />
       </TouchableOpacity>
       <View style={s`flex-1 items-center justify-center`}>
         {!Loading ? (<>
@@ -48,23 +50,23 @@ const HomeHeader = () => {
             weight="Medium"
             size={20}
             className="text-center"
-            color={theme.colors.blue[600]}>
+            color={constants.theme[Theme].text}>
             {PaginationCity != "" && `${PaginationCity.name}, ${PaginationCity.region}`}
           </Text>
           <Text
             size={16}
             weight="Light"
             className="text-center"
-            color={theme.colors.dark[800]}>
+            color={constants.theme[Theme].lead}>
             {moment().format('ddd, DD MMMM')}
           </Text>
           <Pagination Cities={Cities} ActiveId={ActiveId} />
-        </>) : (<ActivityIndicator size={'large'} color={theme.colors.blue[600]} />)}
+        </>) : (<ActivityIndicator size={'large'} color={constants.theme[Theme].text} />)}
       </View>
       <TouchableOpacity
         onPress={() => navigation.navigate('cities')}
         style={s`p-2`}>
-        <MapIcon size={30} color={theme.colors.darkBlue[700]} />
+        <MapIcon size={30} color={constants.theme[Theme].text} />
       </TouchableOpacity>
     </View>
   );

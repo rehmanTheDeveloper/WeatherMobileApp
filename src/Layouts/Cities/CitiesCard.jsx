@@ -6,8 +6,10 @@ import CityCard from './CityCard';
 import {Button, Modal, Text} from '../../ui-components';
 import {useCity} from '../../hooks';
 import {useRefresh} from '../../contexts/RefreshContext';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const CitiesCard = () => {
+  const {Theme} = useTheme();
   const [ModalState, setModalState] = useState({
     city: {},
     active: false,
@@ -65,7 +67,7 @@ const CitiesCard = () => {
                 active: !prev.active,
               }));
             }}>
-            <Text size={16} color={theme.colors.dark[50]} weight="Medium">
+            <Text size={16} color={constants.theme[Theme].buttonText} weight="Medium">
               Cancel
             </Text>
           </Button>
@@ -78,7 +80,7 @@ const CitiesCard = () => {
                 active: !prev.active,
               }));
             }}>
-            <Text size={16} color={theme.colors.dark[50]} weight="Medium">
+            <Text size={16} color={constants.theme[Theme].text} weight="Medium">
               Delete
             </Text>
           </Button>

@@ -1,22 +1,24 @@
 import React from 'react';
 import { Text as RNText, StyleSheet } from 'react-native';
-import { theme } from '../constants';
+import { constants, theme } from '../constants';
 import { s } from 'react-native-wind';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Text = ({
     size = 18,
-    color = theme.colors.dark[950],
+    color = null,
     weight = "Regular",
     style = {},
     className = "",
     children
 }) => {
+    const {Theme} = useTheme();
     const fontFamily = "NoirPro-"+weight;
     const styles = StyleSheet.create({
         text: {
             fontFamily: fontFamily,
             fontSize: size,
-            color: color
+            color: !color ? constants.theme[Theme].text : color
         }
     })
     return (

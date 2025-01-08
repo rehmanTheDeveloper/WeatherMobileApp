@@ -1,8 +1,9 @@
 import React from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {s} from 'react-native-wind';
-import {theme} from '../constants';
+import {constants, theme} from '../constants';
 import LinearGradient from 'react-native-linear-gradient';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Card = ({
   children,
@@ -14,6 +15,7 @@ const Card = ({
   body = children,
   onPress = () => {},
 }) => {
+  const {Theme} = useTheme();
   return touchable ? (
     <TouchableOpacity
       style={[s`p-2 relative ${wrapperClassName}`, wrapperStyle]}
@@ -21,7 +23,7 @@ const Card = ({
       aria-label="Card Wrapper">
       <LinearGradient
         style={[s`py-3 px-2 rounded-2xl ${cardClassName}`, cardStyle]}
-        colors={[theme.colors.blue[600], theme.colors.blue[950]]} start={{x: 0, y: 0}}>
+        colors={constants.theme[Theme].cardGradient} start={{x: 0, y: 0}}>
         {children}
       </LinearGradient>
     </TouchableOpacity>
@@ -31,7 +33,7 @@ const Card = ({
       aria-label="Card Wrapper">
       <LinearGradient
         style={[s`py-3 px-2 rounded-2xl ${cardClassName}`, cardStyle]}
-        colors={[theme.colors.blue[600], theme.colors.blue[950]]} start={{x: 0, y: 0}}>
+        colors={constants.theme[Theme].cardGradient} start={{x: 0, y: 0}}>
         {body}
       </LinearGradient>
     </View>

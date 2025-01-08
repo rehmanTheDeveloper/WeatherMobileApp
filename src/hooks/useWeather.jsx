@@ -36,20 +36,10 @@ const useWeather = () => {
   const weatherForecast = async (cityLon, cityLat, setForecasts) => {
     try {
       await axios
-        .get(`${configs.ForecastAPI}&q=${cityLat},${cityLon}&days=2`)
+        .get(`${configs.ForecastAPI}&q=${cityLat},${cityLon}&days=1`)
         .then(response => {
-          const weatherForecast = response.data.forecast;
-          const forecasts = [];
-          weatherForecast.forecastday[0].hour.map((singleForcast) => {
-            const image = getWeatherImage(singleForcast.condition.text, singleForcast.is_day);
-            // console.log(`Time: ${singleForcast.time}`);
-            forecasts.push({
-              time: singleForcast.time,
-              image: image,
-              temperature: singleForcast.temp_c
-            })
-          })
-          setForecasts(forecasts)
+          const weatherForecast = response.data.forecast.forecastday;
+          setForecasts(weatherForecast)
         });
     } catch (error) {
       console.log(error.message);

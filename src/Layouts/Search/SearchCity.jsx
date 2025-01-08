@@ -1,13 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {ScrollView, View} from 'react-native';
 import {s} from 'react-native-wind';
-import {theme} from '../../constants';
+import {constants, theme} from '../../constants';
 import {Input, Text} from '../../ui-components';
 import {MagnifyingGlassIcon} from 'react-native-heroicons/solid';
 import CityCard from './CityCard';
 import {useCity} from '../../hooks';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const SearchCity = () => {
+  const {Theme} = useTheme();
   const [SearchValue, setSearchValue] = useState('');
   const [Cities, setCities] = useState([]);
   const [Message, setMessage] = useState("");
@@ -28,7 +30,7 @@ const SearchCity = () => {
     <View style={s`flex-1 w-full px-3`}>
       <Input
         primaryIcon={
-          <MagnifyingGlassIcon size={24} color={theme.colors.dark[400]} />
+          <MagnifyingGlassIcon size={24} color={constants.theme[Theme].text} />
         }
         value={SearchValue}
         setValue={setSearchValue}

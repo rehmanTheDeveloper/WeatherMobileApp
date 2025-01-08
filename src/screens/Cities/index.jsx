@@ -1,14 +1,16 @@
 import React from 'react';
 import {s} from 'react-native-wind';
-import {theme} from '../../constants';
+import {constants, theme} from '../../constants';
 import LinearGradient from 'react-native-linear-gradient';
 import {CitiesHeader, CitiesCard} from '../../Layouts';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const Cities = ({navigation}) => {
+  const {Theme} = useTheme();
   return (
     <LinearGradient
       style={s`flex-1 items-center`}
-      colors={[theme.colors.darkBlue[50], theme.colors.blue[100]]}>
+      colors={constants.theme[Theme].gradientColor}>
       <CitiesHeader />
       <CitiesCard />
     </LinearGradient>

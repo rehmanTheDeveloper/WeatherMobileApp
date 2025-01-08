@@ -1,19 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, Image, TouchableOpacity, View} from 'react-native';
 import {s} from 'react-native-wind';
-import {theme} from '../../constants';
+import {constants, theme} from '../../constants';
 import {Card, Text} from '../../ui-components';
 import {useWeather} from '../../hooks';
 import { TrashIcon } from 'react-native-heroicons/solid';
 import { usePaginationRefresh } from '../../contexts/PaginationRefreshContext';
 import { useNavigation } from '@react-navigation/native';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const CityCard = ({details, setModalState}) => {
+  const {Theme} = useTheme();
   const navigation = useNavigation();
   const [Loading, setLoading] = useState(true);
   const [WeatherState, setWeatherState] = useState({});
   const {currentWeather} = useWeather();
-  const {setPaginationCity, setPaginationRefresh} = usePaginationRefresh();
 
   useEffect(() => {
     const fetchCurrentWeather = async () => {
@@ -28,6 +29,10 @@ const CityCard = ({details, setModalState}) => {
       <Card
         wrapperClassName="w-full items-center flex-1"
         cardClassName="flex flex-row justify-between"
+        cardStyle={{
+          borderWidth: 1,
+          borderColor: constants.theme[Theme].borderColor
+        }}
         touchable={true}>
         <View style={s`flex-1 justify-between `}>
           <View

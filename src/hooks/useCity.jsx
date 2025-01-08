@@ -5,10 +5,11 @@ import { useNavigation } from '@react-navigation/native';
 import { useRefresh } from '../contexts/RefreshContext';
 import axios from 'axios';
 import { usePaginationRefresh } from '../contexts/PaginationRefreshContext';
+import { Alert } from 'react-native';
 
 const useCity = () => {
     const navigation = useNavigation();
-    const {setObjectItem, getObjectItem} = AsyncHelper();
+    const {setObjectItem, getObjectItem, removeAllItems} = AsyncHelper();
     const {setRefresh} = useRefresh();
     const {setPaginationCity} = usePaginationRefresh();
 
@@ -84,6 +85,25 @@ const useCity = () => {
             console.log(error.message);
         }
     }
+    const resetApp = async () => {
+        try {
+            Alert.alert("Reset App", "Are you Sure to Reset all Data?", [{
+                text: "Cancel",
+                onPress: () => {}
+            }, {
+                text: "Delete",
+                style: "destructive",
+                onPress: async () => {
+                    const response = await removeAllItems();
+                    if (response) {
+                        throw {};
+                    }
+                }
+            }])
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
     const fetchPaginationCity = async () => {
         try {
             const cities = await getObjectItem("cities");
@@ -100,7 +120,8 @@ const useCity = () => {
         addCity,
         removeCity,
         fetchPaginationCities,
-        fetchPaginationCity
+        fetchPaginationCity,
+        resetApp
     }
 }
 

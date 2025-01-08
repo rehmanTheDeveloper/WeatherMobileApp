@@ -51,8 +51,16 @@ const AsyncHelper = () => {
             return false;
         }
     }
+    const removeAllItems = async () => {
+        try {
+            await AsyncStorage.clear();
+            return true;
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
-    return {getItem, setItem, removeItem, getObjectItem, setObjectItem};
+    return {getItem, setItem, removeItem, getObjectItem, setObjectItem, removeAllItems};
 }
 
 export default AsyncHelper;
