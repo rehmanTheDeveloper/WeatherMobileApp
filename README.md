@@ -1,4 +1,4 @@
-# Weather Mobile Application Documentation
+# Weather Forecast Documentation
 
 ## Overview
 The Weather Mobile App is a React Native application designed to provide real-time weather data for user-selected or current locations. The app features city management, detailed weather forecasts, and customizable settings. It integrates seamlessly with a weather API for accurate and up-to-date weather information.
