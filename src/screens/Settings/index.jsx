@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, TouchableOpacity, View} from 'react-native';
+import {ScrollView, TouchableOpacity} from 'react-native';
 import {s} from 'react-native-wind';
 import {Text} from '../../ui-components';
 import LinearGradient from 'react-native-linear-gradient';
@@ -12,6 +12,7 @@ import {
 } from 'react-native-heroicons/solid';
 import { useTheme } from '../../contexts/ThemeContext';
 import { useCity } from '../../hooks';
+import AsyncHelper from '../../asyncHelpers';
 
 const Settings = ({navigation}) => {
   const {Theme} = useTheme();
@@ -30,24 +31,25 @@ const Settings = ({navigation}) => {
 };
 
 const SettingsItemsList = () => {
-  const {setTheme} = useTheme();
+  const {setTheme, Theme} = useTheme();
   const {resetApp} = useCity();
+  const {setItem} = AsyncHelper();
+
+  const toggleTheme = async (themeValue) => {
+    await setItem('theme', themeValue);
+    setTheme(themeValue);
+  }
+
   return (
     <>
       <SettingsItem
         title={'Light/Dark Mode'}
         icon={<SunIcon size={30} color={theme.colors.yellow[500]} />}
-        onPress={() => setTheme(prev => {
-          if (prev === "light") {
-            return "dark";
-          } else {
-            return "light";
-          }
-        })}
+        onPress={() => toggleTheme(Theme === "light" ? "dark" : "light")}
       />
       <SettingsItem
         title={'Reset Data'} onPress={resetApp}
-        icon={<ArrowPathIcon size={30} color={theme.colors.blue[500]} />}
+        icon={<ArrowPathIcon size={30} color={constants.theme[Theme].text} />}
       />
     </>
   );

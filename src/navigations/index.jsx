@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Home, OnBoard, Settings, Cities, Search} from '../screens';
 import AsyncHelper from '../asyncHelpers';
-import { stackConfigs } from './config';
+import { getStackConfigs, stackConfigs } from './config';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Stack = createStackNavigator();
 const MainStack = createStackNavigator();
@@ -10,6 +11,8 @@ const MainStack = createStackNavigator();
 const RootNavigator = () => {
   const [InitialRouteName, setInitialRouteName] = useState(null);
   const {getItem} = AsyncHelper();
+  const {Theme} = useTheme();
+  const stackConfigs = getStackConfigs(Theme)
 
   const onBoardCheck = async () => {
     try {
@@ -41,6 +44,8 @@ const RootNavigator = () => {
 };
 
 const MainStackNavigator = () => {
+  const {Theme} = useTheme();
+  const stackConfigs = getStackConfigs(Theme)
   return (
     <MainStack.Navigator
       initialRouteName="home"

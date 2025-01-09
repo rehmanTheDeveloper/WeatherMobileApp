@@ -17,6 +17,7 @@ const OnBoard = ({navigation}) => {
       const city = [constants.defaultCity];
       await setObjectItem("cities", city);
       if (status) {
+        await setItem('theme', 'light')
         navigation.navigate('app');
       }
     } catch (error) {

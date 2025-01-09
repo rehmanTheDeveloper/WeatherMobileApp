@@ -51,7 +51,6 @@ const useCity = () => {
                 }
             }
             navigation.pop();
-            setPaginationCity(details);
             setRefresh(prev => !prev);
         } catch (error) {
             console.log(error.message);
@@ -94,9 +93,13 @@ const useCity = () => {
                 text: "Delete",
                 style: "destructive",
                 onPress: async () => {
-                    const response = await removeAllItems();
-                    if (response) {
-                        throw {};
+                    try {
+                        const response = await removeAllItems();
+                        if (response) {
+                            throw {};
+                        }
+                    } catch (error) {
+                        console.error(error.message);
                     }
                 }
             }])

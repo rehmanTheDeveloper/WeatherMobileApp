@@ -1,4 +1,4 @@
-import {theme} from '../constants';
+import {constants, theme} from '../constants';
 import {Text} from '../ui-components';
 import {
   Cog6ToothIcon,
@@ -6,14 +6,15 @@ import {
   MapIcon,
 } from 'react-native-heroicons/solid';
 
-export const stackConfigs = {
+export const getStackConfigs = (Theme) => ({
   screenOptions: {
     headerShown: false,
     cardStyle: {
-      backgroundColor: theme.colors.blue[50],
+      backgroundColor: constants.theme[Theme].viewBackground,
     },
   },
-};
+});
+
 export const tabConfigs = {
   screenOptions: {
     headerShown: false,

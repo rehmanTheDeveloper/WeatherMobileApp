@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, Image, View} from 'react-native';
 import {s} from 'react-native-wind';
-import {constants, theme} from '../../constants';
+import {constants} from '../../constants';
 import {Card, Text} from '../../ui-components';
 import {useCity, useWeather} from '../../hooks';
 import { useTheme } from '../../contexts/ThemeContext';
